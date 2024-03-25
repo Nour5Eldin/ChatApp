@@ -3,4 +3,15 @@
     <string name="application_icon_image">"application icon image "</string>
     <string name="application_signature">application Signature</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="icon_back">icon back</string>
+    <string name="login">Login</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="trailingicon_check_email">"TrailingIcon Check email "</string>
+    <string name="icon_forward">icon forward</string>
+    <string name="or_create_an_account">or Create an Account</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
 </resources>
