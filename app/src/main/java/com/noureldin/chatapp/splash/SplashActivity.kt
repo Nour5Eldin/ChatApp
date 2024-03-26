@@ -21,8 +21,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.noureldin.chatapp.R
+import com.noureldin.chatapp.home.HomeActivity
 import com.noureldin.chatapp.login.LoginActivity
 import com.noureldin.chatapp.ui.theme.ChatAppTheme
+import com.noureldin.chatapp.utils.Constants
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +72,11 @@ fun TriggerEvents(event: SplashEvent ,viewModel: SplashViewModel = viewModel(),o
     val context =   LocalContext.current
     when(event){
         SplashEvent.Idle -> {}
-        SplashEvent.NavigateToHome -> {
+       is  SplashEvent.NavigateToHome -> {
+            val intent = Intent(context, HomeActivity::class.java)
+            val user = event.user
+            intent.putExtra(Constants.USER_INTENT_EXTRA,user)
+            context.startActivity(intent)
             onFinish()
         }
         SplashEvent.NavigateToLogin -> {

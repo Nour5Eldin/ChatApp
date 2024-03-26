@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "459285930708",
+    "project_id": "chatapp-97235",
+    "storage_bucket": "chatapp-97235.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459285930708:android:a96502596e6c7d39905141",
+        "android_client_info": {
+          "package_name": "com.noureldin.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNODBIFUCEKVdt66-wIr3wqjaY985RG-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

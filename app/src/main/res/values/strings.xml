@@ -14,4 +14,10 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="register">Register</string>
     <string name="first_name">First Name</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="ok">Ok</string>
+    <string name="add_new_room">"Add New Room "</string>
+    <string name="title_activity_add_room">AddRoomActivity</string>
+    <string name="chat_app">"Chat App "</string>
+    <string name="create_new_room">Create New Room</string>
 </resources>
