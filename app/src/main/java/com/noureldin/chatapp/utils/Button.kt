@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -38,4 +39,11 @@ fun ChatAuthButton(title: String, onClickListener: () -> Unit, enabled: Boolean,
         )
     }
     
+}
+
+@Composable
+fun AddButton(modifier: Modifier, onClick: ()->Unit) {
+Button(modifier = modifier, onClick ={ onClick()}, colors = ButtonDefaults.buttonColors(containerColor = cyan, contentColor = Color.White)) {
+Text(text =  stringResource(R.string.create_room))
+}
 }

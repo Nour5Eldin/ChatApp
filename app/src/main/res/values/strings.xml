@@ -20,4 +20,10 @@
     <string name="title_activity_add_room">AddRoomActivity</string>
     <string name="chat_app">"Chat App "</string>
     <string name="create_new_room">Create New Room</string>
+    <string name="add_new_room_image">"add new room image "</string>
+    <string name="room_name">Room Name</string>
+    <string name="room_description">Room Description</string>
+    <string name="room_category">Room Category</string>
+    <string name="room_category_image">"Room Category Image "</string>
+    <string name="create_room">Create Room</string>
 </resources>

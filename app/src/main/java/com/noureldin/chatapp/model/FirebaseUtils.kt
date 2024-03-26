@@ -1,4 +1,4 @@
-package com.noureldin.chatapp.utils
+package com.noureldin.chatapp.model
 
 
 import com.google.android.gms.tasks.OnFailureListener
@@ -6,7 +6,6 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.noureldin.chatapp.model.AppUser
 
 object FirebaseUtils {
 
@@ -22,6 +21,14 @@ object FirebaseUtils {
         Firebase.firestore.collection(AppUser.COLLECTION_NAME)
             .document(uid)
             .get()
+            .addOnSuccessListener(onSuccessListener)
+            .addOnFailureListener(onFailureListener)
+    }
+
+    fun addRoom(room : Room , onSuccessListener: OnSuccessListener<Void>, onFailureListener: OnFailureListener){
+        Firebase.firestore.collection(Room.COLLECTION_NAME)
+            .document()
+            .set(room)
             .addOnSuccessListener(onSuccessListener)
             .addOnFailureListener(onFailureListener)
     }
