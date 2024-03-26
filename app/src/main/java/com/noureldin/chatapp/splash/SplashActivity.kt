@@ -24,7 +24,7 @@ import com.noureldin.chatapp.R
 import com.noureldin.chatapp.home.HomeActivity
 import com.noureldin.chatapp.login.LoginActivity
 import com.noureldin.chatapp.ui.theme.ChatAppTheme
-import com.noureldin.chatapp.utils.Constants
+import com.noureldin.chatapp.model.Constants
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,18 +68,18 @@ fun SplashScreenContent(viewModel: SplashViewModel = viewModel(),onFinish: () ->
     }
 
 @Composable
-fun TriggerEvents(event: SplashEvent ,viewModel: SplashViewModel = viewModel(),onFinish: () ->Unit){
+fun TriggerEvents(event: SplashViewEvent, viewModel: SplashViewModel = viewModel(), onFinish: () ->Unit){
     val context =   LocalContext.current
     when(event){
-        SplashEvent.Idle -> {}
-       is  SplashEvent.NavigateToHome -> {
+        SplashViewEvent.Idle -> {}
+       is  SplashViewEvent.NavigateToHome -> {
             val intent = Intent(context, HomeActivity::class.java)
             val user = event.user
             intent.putExtra(Constants.USER_INTENT_EXTRA,user)
             context.startActivity(intent)
             onFinish()
         }
-        SplashEvent.NavigateToLogin -> {
+        SplashViewEvent.NavigateToLogin -> {
             val intent = Intent(context, LoginActivity::class.java)
             context.startActivity(intent)
             onFinish()

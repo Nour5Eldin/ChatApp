@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.noureldin.chatapp.model.AppUser
-import com.noureldin.chatapp.utils.FirebaseUtils
+import com.noureldin.chatapp.model.FirebaseUtils
 
 class SplashViewModel : ViewModel() {
-    val events = mutableStateOf<SplashEvent>(SplashEvent.Idle)
+    val events = mutableStateOf<SplashViewEvent>(SplashViewEvent.Idle)
     val auth = Firebase.auth
 
     fun navigate(){
@@ -21,7 +21,7 @@ class SplashViewModel : ViewModel() {
     }
 
     fun getUserFromFireStore(){
-        FirebaseUtils.getUser(auth.currentUser?.uid!!, onSuccessListener = {docSnapshot->
+        FirebaseUtils.getUser(auth.currentUser?.uid!!, onSuccessListener = { docSnapshot->
              val user =  docSnapshot.toObject(AppUser::class.java)
             navigateToHome(user!!)
         }, onFailureListener = {
@@ -29,10 +29,10 @@ class SplashViewModel : ViewModel() {
         })
     }
     fun navigateToHome(user: AppUser){
-        events.value = SplashEvent.NavigateToHome(user)
+        events.value = SplashViewEvent.NavigateToHome(user)
     }
     fun navigateToLogin(){
-       events.value = SplashEvent.NavigateToLogin
+       events.value = SplashViewEvent.NavigateToLogin
 
     }
 }
