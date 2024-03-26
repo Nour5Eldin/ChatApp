@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.noureldin.chatapp.model.AppUser
-import com.noureldin.chatapp.utils.FirebaseUtils
+import com.noureldin.chatapp.model.FirebaseUtils
 
 
 class LoginViewModel: ViewModel() {
@@ -16,14 +16,14 @@ class LoginViewModel: ViewModel() {
     val passwordState = mutableStateOf("")
     val passwordErrorState = mutableStateOf<String?>(null)
     val auth = Firebase.auth
-    val event = mutableStateOf<LoginEvent>(LoginEvent.Idle)
+    val event = mutableStateOf<LoginViewEvent>(LoginViewEvent.Idle)
     val isLoading = mutableStateOf(false)
     val messageState = mutableStateOf("")
     fun navigateToRegister(){
-        event.value = LoginEvent.NavigateToRegistration
+        event.value = LoginViewEvent.NavigateToRegistration
     }
     fun resetEventState(){
-        event.value = LoginEvent.Idle
+        event.value = LoginViewEvent.Idle
     }
     fun login(){
         if (validateFields()){
@@ -45,7 +45,7 @@ class LoginViewModel: ViewModel() {
         }
     }
     fun getUserFromFireStore(uid: String){
-        FirebaseUtils.getUser(uid, onSuccessListener = {docSnapshot->
+        FirebaseUtils.getUser(uid, onSuccessListener = { docSnapshot->
             isLoading.value = false
             val user = docSnapshot.toObject(AppUser::class.java)
             navigateToHome(user!!)
@@ -79,7 +79,7 @@ class LoginViewModel: ViewModel() {
     }
 
     fun navigateToHome(user : AppUser){
-        event.value = LoginEvent.NavigateToHome(user)
+        event.value = LoginViewEvent.NavigateToHome(user)
     }
 
 }

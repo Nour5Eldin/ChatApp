@@ -93,17 +93,17 @@ fun LoginContent(viewModel: LoginViewModel= viewModel(),onFinish: () -> Unit){
 }
 
 @Composable
-fun TriggerEvent(event: LoginEvent, viewModel: LoginViewModel= viewModel() ,onFinish: ()->Unit) {
+fun TriggerEvent(event: LoginViewEvent, viewModel: LoginViewModel= viewModel(), onFinish: ()->Unit) {
     val context = LocalContext.current
     when(event){
-        LoginEvent.Idle -> {}
-        is LoginEvent.NavigateToHome -> {
+        LoginViewEvent.Idle -> {}
+        is LoginViewEvent.NavigateToHome -> {
             val intent = Intent(context,HomeActivity::class.java)
             context.startActivity(intent)
             viewModel.resetEventState()
             onFinish()
         }
-        LoginEvent.NavigateToRegistration -> {
+        LoginViewEvent.NavigateToRegistration -> {
             val intent = Intent(context, RegisterActivity::class.java)
             context.startActivity(intent)
             viewModel.resetEventState()
