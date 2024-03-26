@@ -6,9 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.noureldin.chatapp.login.LoginEvent
 import com.noureldin.chatapp.model.AppUser
-import com.noureldin.chatapp.utils.FirebaseUtils
+import com.noureldin.chatapp.model.FirebaseUtils
 
 
 class RegisterViewModel: ViewModel() {
@@ -19,11 +18,11 @@ class RegisterViewModel: ViewModel() {
     val passwordState = mutableStateOf("")
     val passwordErrorState = mutableStateOf<String?>(null)
     val auth = Firebase.auth
-    val event = mutableStateOf<RegisterEvent>(RegisterEvent.Idle)
+    val event = mutableStateOf<RegisterViewEvent>(RegisterViewEvent.Idle)
     val isLoading = mutableStateOf(false)
     val messageState = mutableStateOf("")
     fun resetEventState(){
-        event.value = RegisterEvent.Idle
+        event.value = RegisterViewEvent.Idle
     }
     fun register(){
         if (validateFields()){
@@ -85,7 +84,7 @@ class RegisterViewModel: ViewModel() {
     }
 
     fun navigateToHome(user : AppUser){
-        event.value = RegisterEvent.NavigateToHome(user)
+        event.value = RegisterViewEvent.NavigateToHome(user)
     }
 
 }

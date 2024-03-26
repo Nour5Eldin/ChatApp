@@ -88,11 +88,11 @@ fun RegisterContent( viewModel: RegisterViewModel= viewModel(),onFinish: ()-> Un
 }
 
 @Composable
-fun TriggerEvent(event: RegisterEvent, viewModel: RegisterViewModel= viewModel(), onSuccessRegister: ()->Unit) {
+fun TriggerEvent(event: RegisterViewEvent, viewModel: RegisterViewModel= viewModel(), onSuccessRegister: ()->Unit) {
     val context = LocalContext.current
     when(event){
-        RegisterEvent.Idle -> {}
-        is RegisterEvent.NavigateToHome -> {
+        RegisterViewEvent.Idle -> {}
+        is RegisterViewEvent.NavigateToHome -> {
             val intent = Intent(context,HomeActivity::class.java)
             context.startActivity(intent)
             onSuccessRegister()
