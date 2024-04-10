@@ -61,15 +61,18 @@ fun RegisterContent( viewModel: RegisterViewModel= viewModel(),onFinish: ()-> Un
                 contentScale = ContentScale.FillBounds
             )) {
             Spacer(modifier = Modifier.fillMaxHeight(0.4F))
-            ChatAuthTextField(state = viewModel.firstNameState , errorState = viewModel.firstNameErrorState.value , lable = stringResource(
+            ChatAuthTextField(
+                state = viewModel.firstNameState , errorState = viewModel.firstNameErrorState.value , lable = stringResource(
                 id = R.string.first_name
             ) )
             Spacer(modifier = Modifier.padding(4.dp))
-            ChatAuthTextField(state = viewModel.emailState , errorState = viewModel.emailErrorState.value , lable = stringResource(
+            ChatAuthTextField(
+                state = viewModel.emailState , errorState = viewModel.emailErrorState.value , lable = stringResource(
                 id = R.string.email
             ) )
             Spacer(modifier = Modifier.padding(4.dp))
-            ChatAuthTextField(state = viewModel.passwordState , errorState = viewModel.passwordErrorState.value , lable = stringResource(
+            ChatAuthTextField(
+                state = viewModel.passwordState , errorState = viewModel.passwordErrorState.value , lable = stringResource(
                 id = R.string.password
             ), ispassword = true)
             Spacer(modifier = Modifier.weight(1F))

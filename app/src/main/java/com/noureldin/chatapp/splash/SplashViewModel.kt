@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.noureldin.chatapp.model.AppUser
+import com.noureldin.chatapp.model.DataUtils
 import com.noureldin.chatapp.model.FirebaseUtils
 
 class SplashViewModel : ViewModel() {
@@ -23,6 +24,7 @@ class SplashViewModel : ViewModel() {
     fun getUserFromFireStore(){
         FirebaseUtils.getUser(auth.currentUser?.uid!!, onSuccessListener = { docSnapshot->
              val user =  docSnapshot.toObject(AppUser::class.java)
+            DataUtils.appUser = user
             navigateToHome(user!!)
         }, onFailureListener = {
             navigateToLogin()

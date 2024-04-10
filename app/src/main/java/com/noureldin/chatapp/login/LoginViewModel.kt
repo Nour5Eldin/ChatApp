@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.noureldin.chatapp.model.AppUser
+import com.noureldin.chatapp.model.DataUtils
 import com.noureldin.chatapp.model.FirebaseUtils
 
 
@@ -48,6 +49,7 @@ class LoginViewModel: ViewModel() {
         FirebaseUtils.getUser(uid, onSuccessListener = { docSnapshot->
             isLoading.value = false
             val user = docSnapshot.toObject(AppUser::class.java)
+            DataUtils.appUser = user
             navigateToHome(user!!)
         }, onFailureListener = {
             isLoading.value = false

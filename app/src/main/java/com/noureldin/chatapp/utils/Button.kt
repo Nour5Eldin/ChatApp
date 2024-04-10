@@ -3,7 +3,6 @@ package com.noureldin.chatapp.utils
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -46,4 +45,14 @@ fun AddButton(modifier: Modifier, onClick: ()->Unit) {
 Button(modifier = modifier, onClick ={ onClick()}, colors = ButtonDefaults.buttonColors(containerColor = cyan, contentColor = Color.White)) {
 Text(text =  stringResource(R.string.create_room))
 }
+}
+
+@Composable
+fun SendButton(onClick: () -> Unit) {
+    Button(onClick = { onClick() },shape = RoundedCornerShape(8.dp) ,colors = ButtonDefaults.buttonColors(containerColor = cyan, contentColor = Color.White)) {
+        Text(text =  stringResource(id = R.string.send), fontSize = 12.sp)
+        Image(painter = painterResource(id = R.drawable.send), contentDescription = stringResource(R.string.icon_send_messages)
+        )
+    }
+
 }

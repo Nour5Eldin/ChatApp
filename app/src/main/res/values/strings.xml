@@ -26,4 +26,8 @@
     <string name="room_category">Room Category</string>
     <string name="room_category_image">"Room Category Image "</string>
     <string name="create_room">Create Room</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="type_a_message">type a message...</string>
+    <string name="send">Send</string>
+    <string name="icon_send_messages">icon send messages</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.noureldin.chatapp.model.AppUser
+import com.noureldin.chatapp.model.DataUtils
 import com.noureldin.chatapp.model.FirebaseUtils
 
 
@@ -47,6 +48,7 @@ class RegisterViewModel: ViewModel() {
         val user = AppUser(firstNameState.value, emailState.value, uid)
         FirebaseUtils.addUser(user, onSuccessListener = {
                isLoading.value = false
+            DataUtils.appUser = user
             navigateToHome(user)
         }, onFailureListener = {
             isLoading.value = false

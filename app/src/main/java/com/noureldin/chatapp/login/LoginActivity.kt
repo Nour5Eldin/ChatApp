@@ -36,6 +36,7 @@ import com.noureldin.chatapp.register.RegisterActivity
 import com.noureldin.chatapp.ui.theme.black50
 import com.noureldin.chatapp.utils.ChatAuthButton
 import com.noureldin.chatapp.utils.ChatAuthTextField
+import com.noureldin.chatapp.utils.ErrorDialog
 import com.noureldin.chatapp.utils.LoadingDialog
 
 class LoginActivity : ComponentActivity() {
@@ -68,19 +69,26 @@ fun LoginContent(viewModel: LoginViewModel= viewModel(),onFinish: () -> Unit){
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp))
-            ChatAuthTextField(state = viewModel.emailState, viewModel.emailErrorState.value, stringResource(
-                id = R.string.email)
+            ChatAuthTextField(
+                state = viewModel.emailState,
+                viewModel.emailErrorState.value, stringResource(
+                id = R.string.email),
+                trailingIcon = R.drawable.check_mark
             )
             Spacer(modifier = Modifier.padding(5.dp))
-            ChatAuthTextField(state = viewModel.passwordState, viewModel.passwordErrorState.value, stringResource(
+            ChatAuthTextField(
+                state = viewModel.passwordState, viewModel.passwordErrorState.value, stringResource(
                 id = R.string.password) , ispassword = true
             )
             Spacer(modifier = Modifier.height(16.dp))
-            ChatAuthButton(title = stringResource(id = R.string.login), onClickListener = { viewModel.login() }, enabled = true, modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .align(Alignment.CenterHorizontally))
+            ChatAuthButton(title = stringResource(id = R.string.login),
+                onClickListener = { viewModel.login() }, enabled = true,
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .align(Alignment.CenterHorizontally))
             Spacer(modifier = Modifier.padding(4.dp))
-            TextButton(onClick = { viewModel.navigateToRegister() }, modifier = Modifier.padding(horizontal = 16.dp)) {
+            TextButton(onClick = { viewModel.navigateToRegister() },
+                modifier = Modifier.padding(horizontal = 16.dp)) {
                 Text(text = stringResource(R.string.or_create_an_account), color = black50, fontSize = 14.sp, fontWeight = FontWeight.Light)
 
             }
@@ -90,6 +98,7 @@ fun LoginContent(viewModel: LoginViewModel= viewModel(),onFinish: () -> Unit){
         onFinish()
     }
     LoadingDialog(isLoading = viewModel.isLoading)
+    ErrorDialog(title = viewModel.messageState)
 }
 
 @Composable
