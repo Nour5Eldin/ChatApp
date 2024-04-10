@@ -1,6 +1,5 @@
 package com.noureldin.chatapp.addRoom
 
-import android.hardware.TriggerEvent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
@@ -26,7 +24,6 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -98,13 +95,15 @@ fun AddRoomContent(viewModel: AddRoomViewModel= viewModel(), onFinish:() -> Unit
                         .align(Alignment.CenterHorizontally),
                     contentScale = ContentScale.Crop )
                 Spacer(modifier = Modifier.height(12.dp))
-                ChatAuthTextField(state = viewModel.roomNameState ,
+                ChatAuthTextField(
+                    state = viewModel.roomNameState ,
                     errorState = viewModel.roomNameErrorState.value ,
                     lable = stringResource(R.string.room_name) )
                 Spacer(modifier = Modifier.height(12.dp))
                 CategoryDropDown(modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(modifier = Modifier.height(12.dp))
-                ChatAuthTextField(state = viewModel.roomDescriptionState ,
+                ChatAuthTextField(
+                    state = viewModel.roomDescriptionState ,
                     errorState = viewModel.roomDescriptionErrorState.value ,
                     lable = stringResource(R.string.room_description) )
                 Spacer(modifier = Modifier.height(60.dp))
@@ -113,6 +112,7 @@ fun AddRoomContent(viewModel: AddRoomViewModel= viewModel(), onFinish:() -> Unit
                     .align(Alignment.CenterHorizontally)) {
                     viewModel.addRoom()
                 }
+                Spacer(modifier = Modifier.height(100.dp))
             }
         }
         LoadingDialog(isLoading = viewModel.isLoading)
@@ -138,7 +138,7 @@ fun CategoryDropDown(viewModel: AddRoomViewModel = viewModel(), modifier: Modifi
             readOnly = true,
             label = {
                 Text(
-                    text = stringResource(R.string.room_category),
+                    text = stringResource(R.string.room_category), color = black38
 
                     )
 

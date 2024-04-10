@@ -21,7 +21,7 @@ class AddRoomViewModel: ViewModel() {
     fun addRoom(){
         if (validateFields()){
             isLoading.value = true
-            val room = Room(roomNameState.value, roomDescriptionState.value, selectedCategoryItem.value.id)
+            val room = Room(name = roomNameState.value, description =  roomDescriptionState.value, categoryID = selectedCategoryItem.value.id)
             FirebaseUtils.addRoom(room, onSuccessListener = {
                 isLoading.value = false
                 isDone.value = true
